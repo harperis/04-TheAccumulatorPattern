@@ -20,7 +20,6 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
 import rosegraphics as rg
 import math
 
-
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_summing_example()

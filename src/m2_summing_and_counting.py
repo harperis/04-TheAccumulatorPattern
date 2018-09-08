@@ -7,9 +7,11 @@ A subsequent module lets you practice the ACCUMULATOR pattern in another classic
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Isaac Harper.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
+
+import math
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -28,10 +30,11 @@ def main():
     run_test_count_sines_vs_cosines()
 
 
+
 def run_test_sum_more_cosines():
     """ Tests the   sum_more_cosines   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  sum_more_cosines  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     #
@@ -66,9 +69,28 @@ def run_test_sum_more_cosines():
     # TO DO: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
     # ------------------------------------------------------------------
+    expected = .2113
+    answer = sum_more_cosines(1, 3)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:   ', answer)
+
+    expected = .63956
+    answer = sum_more_cosines(3, 7)
+    print('Test 3 expected:', expected)
+    print('answer', answer)
+
+    expected = .8237589
+    answer = sum_more_cosines(9,12)
+    print('Test 4 expected', expected)
+    print('answer', answer)
 
 
 def sum_more_cosines(m, n):
+    m <= n
+    total = 0
+    for k in range(m, n + 1):
+        total = total + math.cos(k)
+    return total
     """
     What comes in:  The two arguments are integers m and n, with m <= n.
     What goes out:  Returns the sum
@@ -83,7 +105,7 @@ def sum_more_cosines(m, n):
          which is approximately 0.02082.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #   That is called TEST-DRIVEN DEVELOPMENT (TDD).
     #
@@ -99,7 +121,7 @@ def sum_more_cosines(m, n):
 def run_test_count_sines_from():
     """ Tests the   count_sines_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # Done: 4. Implement this TEST function.
     #   It TESTS the  count_sines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -117,6 +139,21 @@ def run_test_count_sines_from():
     print('Test 1 expected:', expected)
     print('       actual:  ', answer)
 
+    expected = 3
+    answer = count_sines_from(0, 5)
+    print('Test 2 expected:', expected)
+    print('answer', answer)
+
+    expected = 7
+    answer = count_sines_from(9, 20)
+    print('Test 3 expected', expected)
+    print('answer',answer)
+
+    expected = 5
+    answer = count_sines_from(35, 45)
+    print('Test 4 expected:', expected)
+    print('answer', answer)
+
     # ------------------------------------------------------------------
     # TO DO: 4 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
@@ -124,6 +161,12 @@ def run_test_count_sines_from():
 
 
 def count_sines_from(m, n):
+    count = 0
+    m <= n
+    for k in range(m, n + 1):
+        if math.sin(k) > 0:
+            count = count + 1
+    return count
     """
     What comes in:  The two arguments are integers m and n, with m <= n.
     What goes out:  Returns the number of integers from m to n,
@@ -143,7 +186,7 @@ def count_sines_from(m, n):
       -- count_sines_from(9, 9)  returns  1
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -155,7 +198,7 @@ def count_sines_from(m, n):
 def run_test_count_sines_vs_cosines():
     """ Tests the   count_sines_vs_cosines   function. """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # Done: 6. Implement this TEST function.
     #   It TESTS the  count_sines_vs_cosines  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -177,9 +220,34 @@ def run_test_count_sines_vs_cosines():
     # TO DO: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
-
+    expected = 25
+    answer = count_sines_vs_cosines(26)
+    print('Test 2 expected', expected)
+    print('answer', answer)
+    expected = 20
+    answer = count_sines_vs_cosines(21)
+    print('Test 3 expected', expected)
+    print('answer', answer)
+    expected = 12
+    answer = count_sines_vs_cosines(13)
+    print('Test 4 expected', expected)
+    print('answer', answer)
+    expected = 400
+    answer = count_sines_vs_cosines(401)
+    print('Test 5 expected', expected)
+    print('answer', answer)
+    expected = 2000
+    answer = count_sines_vs_cosines(2001)
+    print('Test 6 expected', expected)
+    print('answer', answer)
 
 def count_sines_vs_cosines(m):
+    count = 0
+    for k in range(m):
+        if math.sin(k) > math.cos(k):
+            count = count + 2
+    return count
+
     """
     What comes in:  The sole argument is a non-negative integer m.
     What goes out:  Returns the number of integers from -m to m,
@@ -204,7 +272,7 @@ def count_sines_vs_cosines(m):
       -- Also:  count_sines_vs_cosines(101) returns 100 (trust me!)
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # Done: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
