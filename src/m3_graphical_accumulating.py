@@ -69,10 +69,10 @@ def run_test_draw_parallel_lines():
 
 
 def draw_parallel_lines(n, point, length, window):
-
-
-
-
+    #window = rg.RoseWindow(window)
+    #for k in range(n)
+    #window.render()
+    #window.close_on_mouse_click()
     """
     What comes in: The four arguments are:
       -- A positive integer n.
@@ -138,6 +138,9 @@ def run_test_draw_lines():
 
 
 def draw_lines(n, point, window):
+    for k in range(n):
+
+
     """
     What comes in: The three arguments are:
       -- A integer n that is at least 2.
