@@ -13,7 +13,7 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
 """  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
-
+import math
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -72,12 +72,15 @@ def draw_parallel_lines(n, point, length, window):
     x = point.x
     y = point.y
     for k in range(n):
-        point1 = rg. Point(x, y)
-        point2
-        lines = rg.Line(point1, point2)
-        lines.attach_to(window)
-    window.render()
-    window.close_on_mouse_click()
+        point = rg.Point(x, y)
+        point2 = rg.Point(x + length, y)
+        y = y + 30
+        line = rg.Line(point, point2)
+        line.attach_to(window)
+        window.render()
+
+
+
     """
     What comes in: The four arguments are:
       -- A positive integer n.
@@ -105,7 +108,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -145,17 +148,12 @@ def run_test_draw_lines():
 def draw_lines(n, point, window):
     x = point.x
     y = point.y
-    x2 = point.x + 100
-    y2 = point.y + 100
     for k in range(n):
         point = rg.Point(x, y)
-        point2 = rg.Point(x2, y2)
+        point2 = rg.Point(x + 100, y + k * (200 / n))
         line = rg.Line(point, point2)
         line.attach_to(window)
         window.render()
-
-
-
     """
     What comes in: The three arguments are:
       -- A integer n that is at least 2.
@@ -183,7 +181,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,

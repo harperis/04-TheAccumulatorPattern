@@ -75,6 +75,7 @@ def run_test_draw_squares_from_circle():
 def draw_squares_from_circle(n, circle, window):
     pixels = 0
     for k in range(n):
+        circle.attach_to(window)
 
         x = x + pixels
     """
