@@ -13,7 +13,7 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
 """  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
-
+import math
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -73,11 +73,12 @@ def run_test_draw_squares_from_circle():
 
 
 def draw_squares_from_circle(n, circle, window):
-    pixels = 0
+    circle.attach_to(window)
     for k in range(n):
-        circle.attach_to(window)
-
-        x = x + pixels
+        squares = rg.Square(circle.center, circle.radius * 2)
+        squares.center = rg.Point(circle.center.x + (k * circle.radius), circle.center.y + (k * circle.radius))
+        squares.attach_to(window)
+    window.render()
     """
     What comes in:  Three arguments:
       -- A positive integer n.
@@ -103,7 +104,7 @@ def draw_squares_from_circle(n, circle, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -125,9 +126,15 @@ def run_test_draw_circles_from_rectangle():
     print('Testing the  draw_circles_from_rectangle  function:')
     print('  See the graphics windows that pop up.')
     print('--------------------------------------------------')
-
+    title = 'Test 1 and 2'
+    window1 = rg.RoseWindow(720, 500, title)
+    # Test 1 #
+    rectangle1 = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
+    draw_circles_from_rectangle(5, 5, rectangle1, window1)
+    window1.render()
+    window1.close_on_mouse_click()
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # Done: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -142,6 +149,15 @@ def run_test_draw_circles_from_rectangle():
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
+    rectangle.attach_to(window)
+    for k in range(m):
+        circle_row = rg.Circle(rectangle.get_center(), rectangle.get_width())
+
+        circle_row.attach_to(window)
+    #for k in range(n):
+        #circle_column = rg.Circle()
+        #circle_column.attach_to(window)
+    window.render()
     """
     What comes in:  Four arguments:
       -- Positive integers m and n.
@@ -237,6 +253,9 @@ def run_test_draw_lines_from_rectangles():
 
 
 def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    window.render()
     """
     What comes in:  Four arguments:
       -- Two rg.Rectangles.
